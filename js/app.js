@@ -21,7 +21,7 @@ const displayItems = (items) => {
       <h5 class="card-text"><span class="text-primary fw-bold">Model:</span> ${item.slug}</h5>
     </div>
     <div class="">
-    <button onclick="itemsDetails('${item.slug}')"
+    <button onclick="loadItemsDetails('${item.slug}')"
     class="btn w-100 btn-outline-secondary"
     type="button"
     id="button-addon2"
@@ -34,9 +34,35 @@ const displayItems = (items) => {
   });
 };
 
-const itemsDetails = (itemId) => {
+const loadItemsDetails = (itemId) => {
   const url = ` https://openapi.programming-hero.com/api/phone/${itemId}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => console.log(data.data));
+    .then((data) => displayItemsDetails(data.data));
+};
+
+const displayItemsDetails = (item) => {
+  console.log(item);
+  const itemDetails = document.getElementById("item-details");
+  const div = document.createElement("div");
+  div.classList.add("card");
+  div.innerHTML = `
+    <div class="row p-3">
+    <div class="col-md-4">
+        <img src="${item.image}" class="img-fluid rounded-start" alt="..." />
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+        <h1 class="card-title">Information</h1>
+        <h6><span class="fw-bold">Name:</span> ${item.name}</h6>
+        <h6><span class="fw-bold">Model:</span> ${item.slug}</h6>
+        <h6><span class="fw-bold">Released:</span> ${item.releaseDate}</h6>
+        <p> </p>
+        <a target="_blank" href="details video
+        }" class="btn btn-primary shadow-none">Go somewhere</a>
+        </div>
+    </div>
+    </div>
+    `;
+  itemDetails.appendChild(div);
 };

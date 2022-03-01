@@ -21,7 +21,7 @@ const displayItems = (items) => {
       <h5 class="card-text"><span class="text-primary fw-bold">Model:</span> ${item.slug}</h5>
     </div>
     <div class="">
-    <button
+    <button onclick="itemsDetails('${item.slug}')"
     class="btn w-100 btn-outline-secondary"
     type="button"
     id="button-addon2"
@@ -40,4 +40,3 @@ const itemsDetails = (itemId) => {
     .then((res) => res.json())
     .then((data) => console.log(data.data));
 };
-itemsDetails();

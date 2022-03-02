@@ -13,23 +13,23 @@ const displayItems = (items) => {
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
-    <div class="card text-center h-100 p-3">
-    <img src="${item.image}" class="card-img-top w-50 mx-auto h-75" alt="...">
-    <div class="card-body">
-      <h4 class="card-title text-info">${item.phone_name}</h4>
-      <h5 class="card-text"><span class="text-primary fw-bold">Brand:</span> ${item.brand}</h5>
-      <h5 class="card-text"><span class="text-primary fw-bold">Model:</span> ${item.slug}</h5>
-    </div>
-    <div class="">
-    <button onclick="loadItemsDetails('${item.slug}')"
-    class="btn w-100 btn-outline-secondary"
-    type="button"
-    id="button-addon2"
-  >
-    About More
-  </button>
-    </div>
-  </div>`;
+      <div class="card text-center h-100 p-3">
+      <img src="${item.image}" class="card-img-top w-50 mx-auto h-75" alt="...">
+      <div class="card-body">
+        <h4 class="card-title text-info">${item.phone_name}</h4>
+        <h5 class="card-text"><span class="text-primary fw-bold">Brand:</span> ${item.brand}</h5>
+        <h5 class="card-text"><span class="text-primary fw-bold">Model:</span> ${item.slug}</h5>
+      </div>
+      <div class="">
+      <button onclick="loadItemsDetails('${item.slug}')"
+      class="btn w-100 btn-outline-secondary"
+      type="button"
+      id="button-addon2"
+    >
+      About More
+    </button>
+      </div>
+    </div>`;
     searchResults.appendChild(div);
   });
 };

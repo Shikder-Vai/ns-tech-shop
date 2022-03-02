@@ -8,12 +8,14 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
   </head>
-  <body>
+  <body class="bg-info">
     <header class="container text-center text-secondary">
-      <h1 class="mb-3">Wealcom To NS Tech Shop</h1>
+      <h1 class="mb-3">
+        <span class="text-warning">Wealcom To</span> NS Tech Shop
+      </h1>
     </header>
     <main class="container">
-      <div class="input-group w-50 mx-auto mb-3">
+      <div class="input-group w-75 mx-auto mb-3">
         <input
           id="search-input"
           type="text"
@@ -31,11 +33,12 @@
           Search
         </button>
       </div>
+      <!-- Error Case -->
+      <h3 id="error-text" class="text-danger text-center mt-3"></h3>
+
       <div id="item-details" class="mb-3"></div>
       <!-- show result card -->
       <div id="search-results" class="row row-cols-1 row-cols-md-3 g-4"></div>
-      <!-- Error Case -->
-      <h3 id="error-text" class="text-danger text-center mt-3"></h3>
     </main>
     <!-- Bootstrap -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>

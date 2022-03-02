@@ -1,3 +1,5 @@
+const searchResults = document.getElementById("search-results");
+const itemDetails = document.getElementById("item-details");
 const loadItems = () => {
   const itemText = document.getElementById("search-input");
   const itemTextValue = itemText.value;
@@ -6,7 +8,11 @@ const loadItems = () => {
   //  Empty Error Handle
   if (itemTextValue == "") {
     errorText.innerText = "Please Write Something !";
+    searchResults.innerText = "";
+    itemDetails.textContent = "";
   } else {
+    itemDetails.textContent = "";
+    errorText.innerText = "";
     // Load API
     const url = `https://openapi.programming-hero.com/api/phones?search=${itemTextValue}`;
     fetch(url)
@@ -19,33 +25,36 @@ const displayItems = (items) => {
   const errorText = document.getElementById("error-text");
   if (items.length == 0) {
     errorText.innerText = "No Result Found !";
+    searchResults.innerText = "";
+    itemDetails.textContent = "";
+  } else {
+    errorText.innerText = "";
+    const twentyItems = items.slice(0, 20);
+    searchResults.textContent = "";
+    twentyItems.forEach((item) => {
+      const div = document.createElement("div");
+      div.classList.add("col");
+      div.innerHTML = `
+      <div class="card text-center h-100 p-3">
+      <img src="${item.image}" class="card-img-top w-50 mx-auto h-75" alt="...">
+      <div class="card-body">
+        <h4 class="card-title text-info">${item.phone_name}</h4>
+        <h5 class="card-text"><span class="text-primary fw-bold">Brand:</span> ${item.brand}</h5>
+        <h5 class="card-text"><span class="text-primary fw-bold">Model:</span> ${item.slug}</h5>
+      </div>
+      <div class="">
+      <button onclick="loadItemsDetails('${item.slug}')"
+      class="btn w-100 btn-outline-secondary"
+      type="button"
+      id="button-addon2"
+    >
+      About More
+    </button>
+      </div>
+    </div>`;
+      searchResults.appendChild(div);
+    });
   }
-  const twentyItems = items.slice(0, 20);
-  const searchResults = document.getElementById("search-results");
-  searchResults.textContent = "";
-  twentyItems.forEach((item) => {
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
-    <div class="card text-center h-100 p-3">
-    <img src="${item.image}" class="card-img-top w-50 mx-auto h-75" alt="...">
-    <div class="card-body">
-      <h4 class="card-title text-info">${item.phone_name}</h4>
-      <h5 class="card-text"><span class="text-primary fw-bold">Brand:</span> ${item.brand}</h5>
-      <h5 class="card-text"><span class="text-primary fw-bold">Model:</span> ${item.slug}</h5>
-    </div>
-    <div class="">
-    <button onclick="loadItemsDetails('${item.slug}')"
-    class="btn w-100 btn-outline-secondary"
-    type="button"
-    id="button-addon2"
-  >
-    About More
-  </button>
-    </div>
-  </div>`;
-    searchResults.appendChild(div);
-  });
 };
 
 const loadItemsDetails = (itemId) => {
@@ -57,7 +66,6 @@ const loadItemsDetails = (itemId) => {
 
 const displayItemsDetails = (item) => {
   console.log(item);
-  const itemDetails = document.getElementById("item-details");
   itemDetails.textContent = "";
   const div = document.createElement("div");
   div.classList.add("card");

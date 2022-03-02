@@ -157,9 +157,15 @@ const displayItemsDetails = (item) => {
 
           <a target="_blank" href="details video
           }" class="btn btn-primary shadow-none mt-3">Add to cart</a>
+          <button onclick="lessDetails()" class="btn btn-danger mt-3">Cancle</button>
+
           </div>
       </div>
       </div>
       `;
   itemDetails.appendChild(div);
+};
+
+const lessDetails = () => {
+  itemDetails.textContent = "";
 };

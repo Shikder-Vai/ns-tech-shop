@@ -143,13 +143,25 @@ const displayItemsDetails = (item) => {
     >
       <div class="accordion-body">
         <h6>
-          <span class="fw-bold">Bluetooth:</span> ${item.others?.Bluetooth}
+          <span class="fw-bold">Bluetooth:</span> ${
+            item.others?.Bluetooth ? item.others.Bluetooth : `Not Found`
+          }
         </h6>
-        <h6><span class="fw-bold">GPS:</span> ${item.others?.GPS}</h6>
-        <h6><span class="fw-bold">NFC:</span> ${item.others?.NFC}</h6>
-        <h6><span class="fw-bold">Radio:</span> ${item.others?.Radio}</h6>
-        <h6><span class="fw-bold">USB:</span> ${item.others?.USB}</h6>
-        <h6><span class="fw-bold">WLAN:</span> ${item.others?.WLAN}</h6>
+        <h6><span class="fw-bold">GPS:</span> ${
+          item.others?.GPS ? item.others.GPS : `Not Found`
+        }</h6>
+        <h6><span class="fw-bold">NFC:</span> ${
+          item.others?.NFC ? item.others.NFC : `Not Found`
+        }</h6>
+        <h6><span class="fw-bold">Radio:</span> ${
+          item.others?.Radio ? item.others.Radio : `Not Found`
+        }</h6>
+        <h6><span class="fw-bold">USB:</span> ${
+          item.others?.USB ? item.others.USB : `Not Found`
+        }</h6>
+        <h6><span class="fw-bold">WLAN:</span> ${
+          item?.others?.WLAN ? item.others.WLAN : `Not Found`
+        }</h6>
       </div>
     </div>
     </div>

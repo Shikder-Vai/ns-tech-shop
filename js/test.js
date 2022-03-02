@@ -1,11 +1,22 @@
 const loadItems = () => {
-  const itemText = document.getElementById("searchInput").value;
-  const url = `https://openapi.programming-hero.com/api/phones?search=${itemText}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayItems(data.data));
+  const itemText = document.getElementById("search-input");
+  const itemTextValue = itemText.value;
+  itemText.value = "";
+  const errorText = document.getElementById("error-text");
+  if (itemTextValue == "") {
+    errorText.innerText = "Please Write Something !";
+  } else {
+    const url = `https://openapi.programming-hero.com/api/phones?search=${itemTextValue}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => displayItems(data.data));
+  }
 };
 const displayItems = (items) => {
+  const errorText = document.getElementById("error-text");
+  if (items.length == 0) {
+    errorText.innerText = "No Result Found !";
+  }
   const twentyItems = items.slice(0, 20);
   const searchResults = document.getElementById("search-results");
   searchResults.textContent = "";
